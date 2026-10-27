@@ -1,0 +1,664 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fffaf4;
+    color: #29251f;
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+section {
+    padding: 50px 0;
+}
+
+h1, h2 {
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+h1 {
+    font-size: 48px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+/* 2. Navigation */
+header {
+    background: white;
+    border-bottom: 1px solid #eee5dc;
+}
+
+nav {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+    min-height: 75px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #c45127;
+}
+
+#navMenu {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+#navMenu a:hover {
+    color: #c45127;
+}
+
+#menuToggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* 3. Homepage hero */
+.hero {
+    text-align: center;
+    padding: 90px 20px;
+    background: #f7e9d8;
+    border-radius: 18px;
+    margin-top: 35px;
+}
+
+.hero h1 {
+    max-width: 650px;
+    margin: 0 auto 20px;
+}
+
+.hero h1 span {
+    color: #c45127;
+}
+
+.hero p {
+    max-width: 550px;
+    margin: 0 auto 25px;
+    color: #675e55;
+}
+
+.hero a {
+    display: inline-block;
+    background: #c45127;
+    color: white;
+    padding: 12px 22px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.hero a:hover {
+    background: #9f3b19;
+}
+
+/* 4. Food categories */
+.categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.categories a {
+    display: block;
+    background: white;
+    border: 1px solid #eee5dc;
+    border-radius: 12px;
+    padding: 25px 15px;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.categories a:hover {
+    transform: translateY(-5px);
+    color: #c45127;
+}
+
+/* 5. Featured dishes */
+#featuredDishes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+.dish-card {
+    background: white;
+    border: 1px solid #eee5dc;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.dish-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.dish-info {
+    padding: 18px;
+}
+
+.dish-info h3 {
+    margin-bottom: 8px;
+}
+
+.dish-info p {
+    color: #675e55;
+}
+
+.dish-info button {
+    margin-top: 12px;
+    padding: 10px 15px;
+    background: #c45127;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.dish-info button:hover {
+    background: #9f3b19;
+}
+
+/* 6. About section */
+#about {
+    background: #f7e9d8;
+    padding: 40px;
+    border-radius: 12px;
+    margin-bottom: 50px;
+}
+
+/* 7. Footer */
+footer {
+    background: #29251f;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+/* 8. Tablet */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 36px;
+    }
+
+    .categories {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #featuredDishes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #menuToggle {
+        display: block;
+    }
+
+    #navMenu {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 0;
+        right: 0;
+        background: white;
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        box-shadow: 0 8px 15px #00000015;
+        z-index: 10;
+    }
+
+    #navMenu.open {
+        display: flex;
+    }
+
+    .hero {
+        padding: 60px 20px;
+    }
+}
+
+/* 9. Mobile */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    #featuredDishes {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding: 45px 15px;
+    }
+
+    #about {
+        padding: 25px;
+    }
+}
+
+
+
+/* Menu grid */
+.food-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+/* Filter controls */
+#searchInput,
+#categoryFilter,
+#priceFilter {
+    padding: 12px;
+    margin: 10px 8px 10px 0;
+    border: 1px solid #ddd0c3;
+    border-radius: 6px;
+    background: white;
+    font: inherit;
+    max-width: 100%;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .food-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .food-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+/* Cart page */
+.cart-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: white;
+    border: 1px solid #eee5dc;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 20px 0;
+}
+
+.cart-item img {
+    width: 120px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.cart-item button,
+.cart-summary button {
+    padding: 8px 12px;
+    margin: 6px 4px 6px 0;
+    border: none;
+    border-radius: 5px;
+    background: #c45127;
+    color: white;
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin: 25px 0;
+    padding: 20px;
+    background: #f7e9d8;
+    border-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    .cart-item {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .cart-item img {
+        width: 100%;
+        height: 180px;
+    }
+}
+
+
+
+/* Dish details */
+.details-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: center;
+}
+
+.details-card img {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.details-info h1 {
+    margin: 15px 0;
+}
+
+.details-info p {
+    margin-bottom: 15px;
+}
+
+.details-info button {
+    background: #c45127;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) {
+    .details-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* Logout button */
+#logoutButton {
+    padding: 10px 18px;
+    background: #c45127;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#logoutButton:hover {
+    background: #9f3b19;
+    transform: translateY(-2px);
+}
+
+#logoutButton:active {
+    transform: translateY(0);
+}
+
+
+/* Login and Register inputs */
+#loginForm input,
+#registerForm input,
+#searchInput {
+    width: 100%;
+    padding: 13px 15px;
+    margin: 8px 0 16px;
+    border: 1px solid #e2d6ca;
+    border-radius: 8px;
+    background: #fffdfb;
+    color: #29251f;
+    font-size: 15px;
+    font-family: Arial, sans-serif;
+    outline: none;
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+}
+
+/* Focus effect */
+#loginForm input:focus,
+#registerForm input:focus,
+#searchInput:focus {
+    border-color: #c45127;
+    background: white;
+    box-shadow: 0 0 0 3px #c4512720;
+}
+
+/* Placeholder text */
+#loginForm input::placeholder,
+#registerForm input::placeholder,
+#searchInput::placeholder {
+    color: #a69a8e;
+}
+
+/* Login and Register labels */
+#loginForm label,
+#registerForm label {
+    display: block;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #443b32;
+}
+
+/* Login and Register buttons */
+#loginForm .account-submit,
+#registerForm .account-submit {
+    width: 100%;
+    padding: 13px;
+    margin-top: 12px;
+    border: none;
+    border-radius: 8px;
+    background: #c45127;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+#loginForm .account-submit:hover,
+#registerForm .account-submit:hover {
+    background: #9f3b19;
+    transform: translateY(-2px);
+}
+
+/* Search input */
+#searchInput {
+    max-width: 450px;
+    margin: 15px 0;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+    #loginForm input,
+    #registerForm input,
+    #searchInput {
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+
+/* Login and Register buttons */
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: #c45127;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+/* Hover effect */
+button[type="submit"]:hover {
+    background: #9f3b19;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px #c4512735;
+}
+
+/* Click effect */
+button[type="submit"]:active {
+    transform: translateY(0);
+}
+
+
+h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* hero-image */
+
+.hero-image {
+    width: 100%;
+    max-height: 350px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+    margin: 0 auto 25px;
+}
+
+/* slider form */
+
+#carouselStackedIndicators {
+    width: 100%;
+    max-width: 1300px;
+    margin: 25px auto;
+}
+
+#carouselStackedIndicators .carousel-inner {
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+#carouselStackedIndicators .carousel-item {
+    height: 530px;
+}
+
+#carouselStackedIndicators .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 600px) {
+    #carouselStackedIndicators .carousel-item {
+        height: 170px;
+    }
+}
+
+
+/* Blurred sticky header */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    background: rgba(255, 250, 244, 0.75);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+
+    transition: background 0.3s ease;
+}
+
+
+
+/* Navbar layout */
+header nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Burger button */
+#menuToggle {
+    display: none;
+    background: #c45127;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 13px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Desktop navigation */
+#navMenu {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Mobile navigation */
+@media (max-width: 768px) {
+    #menuToggle {
+        display: block;
+    }
+
+    #navMenu {
+        display: none;
+        position: absolute;
+        top: calc(100% + 8px);
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        background: rgba(255, 250, 244, 0.96);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border-radius: 10px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        z-index: 1001;
+    }
+
+    #navMenu.open {
+        display: flex;
+    }
+
+    #navMenu a {
+        padding: 12px;
+        width: 100%;
+    }
+
+    #navMenu #logoutButton {
+        align-self: flex-start;
+    }
+}

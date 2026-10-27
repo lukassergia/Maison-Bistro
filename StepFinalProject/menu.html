@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu | Maison Bistro</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="./auth.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Maison Bistro</a>
+
+            <button id="menuToggle" aria-label="Toggle menu"
+                    aria-expanded="false">☰</button>
+
+            <div id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart <span id="cartCount">0</span></a>
+                <a href="login.html#login" id="loginLink">Login</a>
+                <!-- <a href="login.html#register">Join Savora</a> -->
+
+                <span id="userGreeting" hidden></span>
+                <button id="logoutButton" hidden>Log out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section>
+            <h1>Our Menu</h1>
+            <p>Discover your next favorite dish.</p>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="Search dishes..."
+                aria-label="Search dishes"
+            >
+
+            <select id="categoryFilter" aria-label="Filter by category">
+                <option value="all">All categories</option>
+                <option value="Pizza">Pizza</option>
+                <option value="Burgers">Burgers</option>
+                <option value="Salads">Salads</option>
+                <option value="Desserts">Desserts</option>
+            </select>
+
+            <select id="priceFilter" aria-label="Filter by price">
+                <option value="all">All prices</option>
+                <option value="10">Up to $10</option>
+                <option value="15">Up to $15</option>
+            </select>
+        </section>
+
+        <section>
+            <div id="menuDishes" class="food-grid">
+                <p>Loading dishes...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> Maison Bistro</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dish Details | Maison Bistro</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./app.js" defer></script>
+    <script src="./details.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="./auth.js" defer></script>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">Maison Bistro</a>
+
+            <button id="menuToggle" aria-label="Toggle menu"
+                    aria-expanded="false">☰</button>
+
+            <div id="navMenu">
+                <a href="index.html">Home</a>
+                <a href="menu.html">Menu</a>
+                <a href="cart.html">Cart <span id="cartCount">0</span></a>
+                <a href="login.html#login" id="loginLink">Login</a>
+                <!-- <a href="login.html#register">Join Savora</a> -->
+
+                <span id="userGreeting" hidden></span>
+                <button id="logoutButton" hidden>Log out</button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="dishDetails">
+            <p>Loading dish...</p>
+        </section>
+
+        <a href="menu.html">← Back to Menu</a>
+    </main>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> SMaison Bistro</p>
+    </footer>
+
+</body>
+</html>
